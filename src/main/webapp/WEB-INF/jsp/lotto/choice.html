@@ -91,6 +91,29 @@
 
 
 </style>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+	  //getLotto
+	  $("#getLotto").on("click", function(){
+		 getLottoNum(); 
+	  });
+  });
+  
+  
+  function getLottoNum() {
+      $.ajax({
+          url : "<c:url value='lotto/getLottoNumber.do'/>",
+          type : "post",
+          dataType : "json",
+          data:{ymd:vYmd},
+          success : function(data){
+alert(data.result);
+          }
+      });
+  }
+
+</script>
 </head>
   <body>
     <div id="jb-container">
@@ -244,6 +267,7 @@
 		<div id="jb-header">
 			<p>
 			<input type="button" class="img-button">
+			<a href="#" id="getLotto">Get Lotto</a>
 			</p>
 		</div>
    </form>
